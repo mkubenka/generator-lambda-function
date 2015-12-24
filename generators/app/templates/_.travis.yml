@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- 4.1.2
+before_install:
+- npm install -g gulp
+after_success:
+- gulp deploy
+notifications:
+  email: false
+deploy:
+  provider: s3
+  bucket: dist-lambda-service
+  skip_cleanup: true
+  local-dir: dist
+  acl: private
+  on:
+    repo: rehf27/lambda-services
