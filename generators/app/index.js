@@ -34,7 +34,20 @@ module.exports = yeoman.generators.Base.extend({
         name: 'region',
         message: 'In what AWS region would you like your service configured?',
         default: 'us-east-1'
-      }];
+      },
+      {
+        type: 'confirm',
+        name: 'setupGitHub',
+        message: 'Do you want to setup GitHUb?',
+        default: true
+      },
+      {
+        type: 'confirm',
+        name: 'setupCI',
+        message: 'Do you want to setup Continuous Integration with Travis CI?',
+        default: true
+      }
+    ];
 
     this.prompt(prompts, function (props) {
       this.props = props;
