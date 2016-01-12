@@ -29,6 +29,9 @@ gulpfile.js
 .gitignore
 .npmignore
 
+## What's Next?
+
+
 
 ## Getting To Know Yeoman
 
