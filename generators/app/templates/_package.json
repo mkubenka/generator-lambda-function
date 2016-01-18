@@ -1,7 +1,7 @@
 {
-  "name": "hello-world",
+  "name": "<%= functionName %>",
   "version": "1.0.0",
-  "description": "AWS Lambda function for simple Hello World service",
+  "description": "<%= description %>",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/*test.js",
@@ -25,6 +25,6 @@
     "stream": "0.0.2",
     "timeformatter": "^0.1.6"
   },
-  "author": "James Rehfeld <james@rehf27.com> (http://rehf27.github.io/#/)",
+  "author": "<%= author %>",
   "license": "MIT"
 }

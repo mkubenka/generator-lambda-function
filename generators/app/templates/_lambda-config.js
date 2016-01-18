@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = {
-  region: 'us-east-1',
+  region: '<%= region %>',
   handler: 'index.handler',
-  description: 'Simple Lambda Function',
+  description: '<%= description %>',
   role: process.env.IAM_ROLE,
-  functionName: 'HelloWorldSample',
+  functionName: '<%= functionName %>',
   timeout: 10,
   memorySize: 128,
   runtime: 'nodejs'

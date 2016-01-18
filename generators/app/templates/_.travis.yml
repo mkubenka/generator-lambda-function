@@ -9,9 +9,9 @@ notifications:
   email: false
 deploy:
   provider: s3
-  bucket: dist-lambda-service
+  bucket: <%= s3Bucket %>
   skip_cleanup: true
   local-dir: dist
   acl: private
   on:
-    repo: rehf27/lambda-services
+    repo: <%= githubUser %>/<%= functionName %>

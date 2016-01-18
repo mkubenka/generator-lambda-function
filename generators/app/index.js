@@ -36,16 +36,22 @@ module.exports = yeoman.generators.Base.extend({
         default: 'us-east-1'
       },
       {
-        type: 'confirm',
-        name: 'setupGitHub',
-        message: 'Do you want to setup GitHUb?',
-        default: true
+        type: 'input',
+        name: 'author',
+        message: 'What is the name and/or email of the author?',
+        default: ''
       },
       {
-        type: 'confirm',
-        name: 'setupCI',
-        message: 'Do you want to setup Continuous Integration with Travis CI?',
-        default: true
+        type: 'input',
+        name: 'githubUser',
+        message: 'What is the GitHub User Name?',
+        default: ''
+      },
+      {
+        type: 'input',
+        name: 's3Bucket',
+        message: 'What S3 bucket would you like to store the artifacts?',
+        default: 'dist-lambda-service'
       }
     ];
 
