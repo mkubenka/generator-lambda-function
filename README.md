@@ -1,4 +1,4 @@
-# generator-lambda-function [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-lambda-function [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Stories in Ready](https://badge.waffle.io/rehf27/generator-lambda-function.svg?label=ready&title=Ready)](http://waffle.io/rehf27/generator-lambda-function)
 > Yeoman generator for a service running as an AWS Lambda Function
 
 ## Installation
