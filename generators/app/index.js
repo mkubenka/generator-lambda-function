@@ -30,21 +30,22 @@ module.exports = yeoman.generators.Base.extend({
         default: 'A riddle, wrapped in a mystery, inside an enigma.'
       },
       {
-        type: 'input',
+        type: 'checkbox',
         name: 'region',
-        message: 'In what AWS region would you like your service configured?',
-        default: 'us-east-1'
-      },
+        message: 'In what AWS region would you like your service deployed??',
+        choices: [{
+          name: 'us-east-1',
+          value: 'us-east-1',
+          checked: true
+        }, {
+          name: 'us-west-1',
+          value: 'us-west-1',
+          checked: false
+        }]},
       {
         type: 'input',
         name: 'author',
         message: 'What is the name and/or email of the author?',
-        default: ''
-      },
-      {
-        type: 'input',
-        name: 'githubUser',
-        message: 'What is the GitHub User Name?',
         default: ''
       },
       {
@@ -67,63 +68,63 @@ module.exports = yeoman.generators.Base.extend({
 
     //Root files
     this.fs.copy(
-      this.templatePath('_index.js'),
+      this.templatePath('index.js'),
       this.destinationPath('index.js')
     );
 
     this.fs.copy(
-      this.templatePath('_lambda-config.js'),
+      this.templatePath('lambda-config.js'),
       this.destinationPath('lambda-config.js')
     );
 
     this.fs.copy(
-      this.templatePath('_gulpfile.js'),
+      this.templatePath('gulpfile.js'),
       this.destinationPath('gulpfile.js')
     );
 
     this.fs.copy(
-      this.templatePath('_package.json'),
+      this.templatePath('package.json'),
       this.destinationPath('package.json')
     );
 
     this.fs.copy(
-      this.templatePath('_README.md'),
+      this.templatePath('README.md'),
       this.destinationPath('README.md')
     );
 
     this.fs.copy(
-      this.templatePath('_default.env'),
+      this.templatePath('default.env'),
       this.destinationPath('default.env')
     );
 
     this.fs.copy(
-      this.templatePath('_.gitignore'),
+      this.templatePath('.gitignore'),
       this.destinationPath('.gitignore')
     );
 
     this.fs.copy(
-      this.templatePath('_.npmignore'),
+      this.templatePath('.npmignore'),
       this.destinationPath('.npmignore')
     );
 
     this.fs.copy(
-      this.templatePath('_.travis.yml'),
+      this.templatePath('.travis.yml'),
       this.destinationPath('.travis.yml')
     );
 
     //Test Files
     this.fs.copy(
-      this.templatePath('_test/_bad-event.json'),
+      this.templatePath('test/bad-event.json'),
       this.destinationPath('test/bad-event.json')
     );
 
     this.fs.copy(
-      this.templatePath('_test/_event.json'),
+      this.templatePath('test/event.json'),
       this.destinationPath('test/event.json')
     );
 
     this.fs.copy(
-      this.templatePath('_test/_hello-world-events-test.js'),
+      this.templatePath('test/hello-world-events-test.js'),
       this.destinationPath('test/hello-world-events-test.js')
     );
 

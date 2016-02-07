@@ -30,4 +30,4 @@ build
 dist
 .idea
 *.env
-_test/events.log
+test/events.log

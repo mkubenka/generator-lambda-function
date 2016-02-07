@@ -7,6 +7,7 @@ var runSequence = require('run-sequence');
 var awsLambda = require('node-aws-lambda');
 var tf = require('timeformatter')('en');
 var pkg = require('./package.json');
+var github = require('./github-api');
 
 var packageFile =
   pkg.name + '_' +

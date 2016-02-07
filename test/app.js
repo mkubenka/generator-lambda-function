@@ -1,7 +1,8 @@
 'use strict';
 var path = require('path');
 var assert = require('yeoman-assert');
-var helpers = require('yeoman-generator').test;
+var helpers = require('yeoman-test');
+//var helpers = require('yeoman-generator').test;
 
 describe('generator-lambda-function:app', function () {
 
@@ -9,7 +10,7 @@ describe('generator-lambda-function:app', function () {
 
     helpers.run(path.join(__dirname, '../generators/app'))
       .withOptions({someOption: true})
-      .withPrompts({someAnswer: true})
+      .withPrompts({functionName: 'test-function'})
       .on('end', done);
 
   });
@@ -36,8 +37,8 @@ describe('generator-lambda-function:app', function () {
     ]);
   });
 
-  //TODO
-  // Setup Git repo and publish to Gitbuh?
-  // Setup Travis CI?
+  it('configure lamda correctly', function () {
 
+
+  });
 });
