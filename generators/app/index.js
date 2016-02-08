@@ -1,9 +1,11 @@
 'use strict';
+var path = require('path');
+var mkdirp = require('mkdirp');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 
-module.exports = yeoman.generators.Base.extend({
+module.exports = yeoman.Base.extend({
   prompting: function () {
     var done = this.async();
 
@@ -30,23 +32,27 @@ module.exports = yeoman.generators.Base.extend({
         default: 'A riddle, wrapped in a mystery, inside an enigma.'
       },
       {
-        type: 'checkbox',
+        type: 'list',
         name: 'region',
         message: 'In what AWS region would you like your service deployed??',
         choices: [{
           name: 'us-east-1',
-          value: 'us-east-1',
-          checked: true
+          value: 'us-east-1'
         }, {
           name: 'us-west-1',
-          value: 'us-west-1',
-          checked: false
-        }]},
+          value: 'us-west-1'
+        }],
+        default: 1
+      },
       {
         type: 'input',
         name: 'author',
-        message: 'What is the name and/or email of the author?',
-        default: ''
+        message: 'What is the name and/or email of the author?'
+      },
+      {
+        type: 'input',
+        name: 'githubUser',
+        message: 'What is the GitHub User or Organization name for this repository?'
       },
       {
         type: 'input',
@@ -64,32 +70,63 @@ module.exports = yeoman.generators.Base.extend({
     }.bind(this));
   },
 
+  default: function () {
+    if (path.basename(this.destinationPath()) !== this.props.functionName) {
+      this.log(
+        'Your generator must be inside a folder named ' + this.props.functionName + '\n' +
+        'I\'ll automatically create this folder.'
+      );
+      mkdirp(this.props.functionName);
+      this.destinationRoot(this.destinationPath(this.props.functionName));
+    }
+
+  },
+
   writing: function () {
+    var properties = {
+      functionName: this.props.functionName,
+      description: this.props.description,
+      author: this.props.author,
+      s3Bucket: this.props.s3Bucket,
+      region: this.props.region,
+      githubUser: this.props.githubUser
+    };
 
-    //Root files
-    this.fs.copy(
+    //Templated files
+    this.fs.copyTpl(
       this.templatePath('index.js'),
-      this.destinationPath('index.js')
+      this.destinationPath('index.js'),
+      properties
     );
 
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('lambda-config.js'),
-      this.destinationPath('lambda-config.js')
+      this.destinationPath('lambda-config.js'),
+      properties
     );
 
+    this.fs.copyTpl(
+      this.templatePath('package.json'),
+      this.destinationPath('package.json'),
+      properties
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('README.md'),
+      this.destinationPath('README.md'),
+      properties
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('.travis.yml'),
+      this.destinationPath('.travis.yml'),
+      properties
+    );
+
+    //Copied files
     this.fs.copy(
       this.templatePath('gulpfile.js'),
       this.destinationPath('gulpfile.js')
-    );
-
-    this.fs.copy(
-      this.templatePath('package.json'),
-      this.destinationPath('package.json')
-    );
-
-    this.fs.copy(
-      this.templatePath('README.md'),
-      this.destinationPath('README.md')
     );
 
     this.fs.copy(
@@ -107,10 +144,6 @@ module.exports = yeoman.generators.Base.extend({
       this.destinationPath('.npmignore')
     );
 
-    this.fs.copy(
-      this.templatePath('.travis.yml'),
-      this.destinationPath('.travis.yml')
-    );
 
     //Test Files
     this.fs.copy(

@@ -2,17 +2,18 @@
 var path = require('path');
 var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
-//var helpers = require('yeoman-generator').test;
 
 describe('generator-lambda-function:app', function () {
 
   before(function (done) {
-
     helpers.run(path.join(__dirname, '../generators/app'))
-      .withOptions({someOption: true})
-      .withPrompts({functionName: 'test-function'})
+      .withPrompts({
+        functionName: 'function-temp',
+        description: 'A lambda function',
+        s3Bucket: 'bucket-list',
+        author: 'Mal Reynolds',
+        region: 'us-east-1'})
       .on('end', done);
-
   });
 
   it('creates the core set of files', function () {
@@ -37,8 +38,8 @@ describe('generator-lambda-function:app', function () {
     ]);
   });
 
-  it('configure lamda correctly', function () {
-
-
-  });
+  //it('configure lamda correctly', function () {
+  //
+  //
+  //});
 });

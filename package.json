@@ -4,8 +4,8 @@
   "description": "Yeoman generator for a service running as an AWS Lambda Function",
   "homepage": "https://github.com/rehf27/generator-lambda-function",
   "bugs": {
-    "url" : "https://github.com/rehf27/generator-lambda-function/issues",
-    "email" : "james@rehf27.com"
+    "url": "https://github.com/rehf27/generator-lambda-function/issues",
+    "email": "james@rehf27.com"
   },
   "author": {
     "name": "James Rehfeld",
@@ -17,10 +17,14 @@
   ],
   "main": "generators/index.js",
   "keywords": [
-    "yeoman-generator", "AWS", "Amazon", "Lambda"
+    "yeoman-generator",
+    "AWS",
+    "Amazon",
+    "Lambda"
   ],
   "dependencies": {
     "chalk": "^1.0.0",
+    "mkdirp": "^0.5.1",
     "restify": "^4.0.3",
     "yeoman-generator": "^0.22.1",
     "yeoman-test": "^1.0.0",
