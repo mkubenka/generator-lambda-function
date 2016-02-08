@@ -130,7 +130,7 @@ module.exports = yeoman.Base.extend({
     );
 
     this.fs.copy(
-      this.templatePath('default.env'),
+      this.templatePath('default.env_'),
       this.destinationPath('default.env')
     );
 
