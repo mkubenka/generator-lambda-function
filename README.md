@@ -19,7 +19,7 @@ yo lambda-function
 ```
 
 ## The Generated Project
-
+```
 package.json
 index.js
 lambda-config.js
@@ -30,6 +30,7 @@ gulpfile.js
 .travis.yml
 .gitignore
 .npmignore
+```
 
 ## What's Next?
 
