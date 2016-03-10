@@ -29,5 +29,5 @@ node_modules
 build
 dist
 .idea
-*.env
+.env
 test/events.log
