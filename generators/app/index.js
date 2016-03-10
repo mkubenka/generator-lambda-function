@@ -34,13 +34,19 @@ module.exports = yeoman.Base.extend({
       {
         type: 'list',
         name: 'region',
-        message: 'In what AWS region would you like your service deployed??',
+        message: 'In what AWS region would you like your service deployed?',
         choices: [{
           name: 'us-east-1',
           value: 'us-east-1'
         }, {
-          name: 'us-west-1',
-          value: 'us-west-1'
+          name: 'us-west-2',
+          value: 'us-west-2'
+        }, {
+          name: 'eu-west-1',
+          value: 'eu-west-1'
+        }, {
+          name: 'ap-northeast-1',
+          value: 'ap-northeast-1'
         }],
         default: 1
       },
