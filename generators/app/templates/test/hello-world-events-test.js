@@ -2,8 +2,6 @@
 var assert = require('assert');
 var HelloWorld = require('../index');
 
-require('dotenv').load();
-
 describe('HelloWorld', function () {
 
   before(function (done) {
